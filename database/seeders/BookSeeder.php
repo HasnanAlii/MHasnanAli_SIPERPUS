@@ -1,7 +1,7 @@
 <?php
 
 
-/// database/seeders/BookSeeder.php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;

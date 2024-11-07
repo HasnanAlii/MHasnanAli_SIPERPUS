@@ -17,7 +17,7 @@ class Book extends Model
         'title', 'author', 'year', 'publisher', 'city', 'cover', 'bookshelf_id'
     ];
 
-    // Relasi many-to-many dengan Category
+    
     public function category()
     {
         return $this->belongsToMany(Category::class, 'category');

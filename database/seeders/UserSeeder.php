@@ -1,6 +1,6 @@
 <?php
 
-// database/seeders/UserSeeder.php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -11,7 +11,7 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        User::create([
+        user::create([
             'username' => 'Admin',
             'name' => 'hasnan',
             'email' => 'hasnan@gmail.com',

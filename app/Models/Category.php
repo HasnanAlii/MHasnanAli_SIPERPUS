@@ -15,7 +15,7 @@ class Category extends Model
         'category'
     ];
 
-    // Relasi many-to-many dengan Book
+    
     public function books()
     {
         return $this->belongsToMany(Book::class, 'book_category');
