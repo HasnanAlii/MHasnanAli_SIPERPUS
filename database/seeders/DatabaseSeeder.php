@@ -15,16 +15,17 @@ class DatabaseSeeder extends Seeder
     {
         
         $this->call([
+            RoleSeeder::class,
             UserSeeder::class,
-            BookshelfSeeder::class,
-            BookSeeder::class,
-            CategoriesSeeder::class,
+            // BookshelfSeeder::class,
+            // BookSeeder::class,
+            // CategoriesSeeder::class,
        
            
         ]);
-        User::factory()->create([
-            'name' => 'hasnan',
-            'email' => 'hasnan@gmail.com',
-        ]);
-    }
+    //     User::factory()->create([
+    //         'name' => 'hasnan',
+    //         'email' => 'hasnan@gmail.com',
+    //     ]);
+     }
 }
