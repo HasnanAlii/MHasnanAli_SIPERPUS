@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Models\role as Model;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Role as RoleModel;
 
-class role extends Model
+class Role extends RoleModel
 {
     //
 }

@@ -2,15 +2,23 @@
 
 namespace Database\Seeders;
 
+use App\Models\Bookshelf;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\Bookshelfs;
+use Illuminate\Support\Facades\DB;
 
 class BookshelfSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        Bookshelfs::create(['code' => 'A01', 'name' => 'Informatika']);
-        Bookshelfs::create(['code' => 'B02', 'name' => 'Sipil']);
+        DB::table("Bookshelves")->insert([
+            ['code' =>'BKS001', 'name'=> 'Novel'],
+            ['code' =>'BKS002', 'name'=> 'Educational']
+        ]);
+
+        Bookshelf::create(['code' => 'BKS003','name' => 'History']);
     }
 }

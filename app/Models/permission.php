@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Spatie\Permission\Models\Permission as Model;
+use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Models\Permission as PermissionModel;
 
-
-class permission extends Model
+class Permission extends PermissionModel
 {
-    
+    //
 }

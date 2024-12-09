@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\permission;
-use App\Models\role;
+use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,22 +14,11 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        //admin
-        role::create(['name' => 'admin']);
-        permission::create(['name'=> 'kelola_akun']);
-        //pustakawan
-        role::create(['name' => 'pustakawan']);
-        permission::create(['name'=> 'kelola_buku']);
-        permission::create(['name'=> 'kelola_peminjaman']);
-        permission::create(['name'=> 'kelola_pengembalian']);
+        Role::create(['name' => 'pustakawan']);
+        Permission::create(['name' => 'edit_book']);
+        Permission::create(['name' => 'edit_user']);
 
-
-        //member
-        role::create(['name' => 'member']);
-        permission::create(['name'=> 'lihat_buku']);
-        permission::create(['name'=> 'pinjam_buku']);
-
-
-
+        Role::create(['name' => 'mahasiswa']);
+        Permission::create(['name' => 'view_book']);
     }
 }

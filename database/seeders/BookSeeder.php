@@ -1,30 +1,26 @@
 <?php
 
-
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Book;
-use App\Models\Category;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class BookSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-        // Membuat buku baru
-       Book::create([
-            'title' => 'Laravel Guide',
-            'author' => 'Taylor Otwell',
-            'year' => 2020,
-            'publisher' => 'Laravel Press',
-            'city' => 'New York',
-            'cover' => 'laravel_cover.jpg',
-            'bookshelfs_id' => 1,
+        Book::create([
+            "title" => "Jarkom - Filosofi",
+            "author" => "GTA",
+            "year" => 2024,
+            "publisher" => "UNSUR Mengantuk",
+            "city" => "Cianjir",
+            "cover" => "public/cover.jpg",
+            "bookshelf_id" => 1
         ]);
-
- 
     }
 }
-
-

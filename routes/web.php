@@ -1,38 +1,12 @@
 <?php
 
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
 
-// GET, POST, PUT, PATCH, DELETE -> rest api
-// PUT -> update secara keseluruhan
-// PATCH -> update salah satu
-// buku {judul, penerbit, penulis}
-
-// route: GET /books
-Route::get('/books', [BookController::class, 'index'])
-    ->name('books.index');
-
-// route: GET /members
-Route::get('/members', function () {
-    return 'Daftar Member';
-});
-
-// route: GET /loans
-Route::get('/loans/{id}', function (int $id) {
-    return 'Daftar Peminjaman '.$id;
-});
-// route: GET /returns
-Route::get('/returns', function () {
-    return 'Daftar Pengembalian';
-});
-
 Route::get('/', function () {
-    return view('panel');
+    return view('welcome');
 });
-
-Route::resource('manga', Controller::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -44,4 +18,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::middleware('auth')->group(function () {
+    Route::get('/books', [BookController::class, 'index'])->name('book');
+    Route::get('/books/create', [BookController::class, 'create'])->name('book.create');
+    Route::post('/books', [BookController::class, 'store'])->name('book.store');
+    Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('book.edit');
+    Route::match(['put', 'patch'], '/books/{id}', [BookController::class, 'update'])->name('book.update');
+    Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('book.destroy');
+    Route::get('/books/print', [BookController::class, 'print'])->name('book.print');
+    Route::get('/books/export', [BookController::class, 'export'])->name('book.export');
+    Route::post('/books/import', [BookController::class, 'import'])->name('book.import');
+});
+
+require __DIR__ . '/auth.php';

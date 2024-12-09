@@ -1,48 +1,27 @@
 <?php
 
-
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
-    public function run()
+    /**
+     * Run the database seeds.
+     */
+    public function run(): void
     {
-
-        $pustakawan = user::create([
-            'username' => 'pustakawan',
-            'name' => 'pustakawan',
-            'email' => 'pustakawan@gmail.com',
-            'password' => Hash::make('password123'),
-            
-        ]);
-        $pustakawan->assignRole('pustakawan');
-        $pustakawan->givePermissionTo('kelola_buku');
-        $pustakawan->givePermissionTo('kelola_peminjaman');
-        $pustakawan->givePermissionTo('kelola_pengembalian');
-
-
-        $mahasiswa = user::create([
-            'username' => 'mahasiswa',
+        User::factory()->create([
             'name' => 'mahasiswa',
-            'email' => 'mahasiswa@gmail.com',
-            'password' => Hash::make('password123'),
-    
-        ]);
-        $mahasiswa->assignRole('member');
-        $mahasiswa->givePermissionTo('lihat_buku');
-        $mahasiswa->givePermissionTo('pinjam_buku');
+            'email' => 'mahasiswa@unsur.ac.id',
+        ])->assignRole('mahasiswa')->givePermissionTo('view_book');
 
-      
-        // user::create([
-        //     'username' => 'Admin',
-        //     'name' => 'hasnan',
-        //     'email' => 'hasnan@gmail.com',
-        //     'password' => Hash::make('password123'),
-        //     'email_verified_at' => now(),
-        // ]);
+        User::factory()->create([
+            'name' => 'pustakawan',
+            'email' => 'pustakawan@unsur.ac.id',
+        ])->assignRole('pustakawan')
+        ->givePermissionTo(['edit_book','edit_user']);
     }
 }
